@@ -98,8 +98,20 @@
 			  )))
 
 (define (handle-letrec defs body env)
-  (display "to be done")
-  (newline))
+  (handle-block body (recursive defs (append (letrec-env defs env) env))))
+
+(define (letrec-env defs env)
+  (cond ((null? defs) '())
+		(else (cons (list (caar defs) 'uninitialized)
+					(letrec-env (cdr defs) env)))
+		))
+
+(define (recursive defs env)
+  (cond ((null? defs) env)
+		(else (set-car! (cdr (assoc (caar defs) env)) (my-eval (cadar defs) env))
+			  (recursive (cdr defs) env)
+			  env)
+		))
 
 (define (handle-call evald-exps)
   (let ((fn (car evald-exps))
