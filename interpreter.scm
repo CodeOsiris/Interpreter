@@ -1,7 +1,7 @@
 (define (repl)
   (display ">>")
   (let ((exp (read)))
-	(cond ((eq? exp '(exit)) 'done)
+	(cond ((equal? exp '(exit)) 'done)
 		  (else (display (top-eval exp))
 				(newline)
 				(repl))
@@ -35,6 +35,7 @@
   (cond
 	((symbol? exp) (lookup exp env))
 	((not (pair? exp)) exp)
+	((eq? (car exp) 'repl) (repl))
 	((eq? (car exp) 'quote) (cadr exp))
 	((eq? (car exp) 'if)
 	 (handle-if (cadr exp) (caddr exp) (cadddr exp) env))
