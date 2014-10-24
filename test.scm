@@ -27,3 +27,12 @@
        (g (lambda (x) (if (= x 0) 1 (* x (f (- x 1)))))))
     (display "Should return 120") (newline)
     (f 5)))
+
+(define (test-cond)
+  (display "Should return 100") (newline)
+  (cond ((= one two) 3)
+		((= one (* one 1))
+		 (cond ((null? '(1 2 3)) 4)
+			   (else (- two one))
+			   ))
+		(else 5)))
