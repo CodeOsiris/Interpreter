@@ -14,21 +14,21 @@ A mini-interpreter written in scheme which is able to interpret itself, and ther
 
 ###How to Run<br/>
 Go to the directory of interpreter and type the following commands in scheme:
->	(load "interpreter.scm")
-	(repl)
-	(load "library.scm")
+>	(load "interpreter.scm")<br/>
+	(repl)<br/>
+	(load "library.scm")<br/>
 
 To use <b>test.scm</b> to test the interpreter:
->	(load "test.scm")
-	(test-define-func)
-	(test-let)
-	(test-let*)
-	(test-letrec)
-	(test-cond)
+>	(load "test.scm")<br/>
+	(test-define-func)<br/>
+	(test-let)<br/>
+	(test-let*)<br/>
+	(test-letrec)<br/>
+	(test-cond)<br/>
 
 To have the interpreter interpret itself:
->	(load "interpreter.scm")
-	(repl)
+>	(load "interpreter.scm")<br/>
+	(repl)<br/>
 
 To exit the interpreter:
->	(exit)
+>	(exit)<br/>
