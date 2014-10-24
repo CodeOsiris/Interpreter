@@ -12,6 +12,9 @@ A mini-interpreter written in scheme which is able to interpret itself, and ther
 <b>library.scm</b>: library, contains implementations of non-primitive functions including:<i>caar, cadr, cdar, cddr, caadr, caddr, cdadr, cadddr, not, equal?, newline, map, assoc, append</i>.<br/>
 <b>test.scm</b>: sample input, containing some test functions including:<i>test-define-func, test-let, test-let*, test-letrec, test-cond</i>.<br/>
 
+###Enhance<br/>
+Fixed a bug in user defined function <b>bind</b>, where cause some unexpected outputs when the number of formal parameters and actual parameters do not match.<br/>
+
 ###How to Run<br/>
 Go to the directory of interpreter and type the following commands in scheme:
 >	(load "interpreter.scm")<br/>
