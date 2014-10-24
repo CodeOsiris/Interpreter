@@ -13,7 +13,7 @@ A mini-interpreter written in scheme which is able to interpret itself, and ther
 <b>test.scm</b>: sample input, containing some test functions including:<i>test-define-func, test-let, test-let*, test-letrec, test-cond</i>.<br/>
 
 ###Enhance<br/>
-Fixed a bug in user defined function <b>bind</b>, where cause some unexpected outputs when the number of formal parameters and actual parameters do not match.<br/>
+Fixed a bug in user defined function <b>bind</b>, which may cause unexpected output when the number of formal parameters and actual parameters do not match.<br/>
 
 ###How to Run<br/>
 Go to the directory of interpreter and type the following commands in scheme:
