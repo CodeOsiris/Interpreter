@@ -8,9 +8,9 @@ Documentation
 A mini-interpreter written in scheme which is able to interpret itself, and therefore could be extended in the future using boot-strap iteration.
 
 ###Files<br/>
-<b>interpreter.scm</b>: main file, provides supporting functions including:<i>define, if, cond, let, let*, letrec, quote, apply</i>.
-<b>library.scm</b>: library, contains implementations of non-primitive functions including:<i>caar, cadr, cdar, cddr, caadr, caddr, cdadr, cadddr, not, equal?, newline, map, assoc, append</i>.
-<b>test.scm</b>: sample input, containing some test functions including:<i>test-define-func, test-let, test-let*, test-letrec, test-cond</i>.
+<b>interpreter.scm</b>: main file, provides supporting functions including:<i>define, if, cond, let, let*, letrec, quote, apply</i>.<br/>
+<b>library.scm</b>: library, contains implementations of non-primitive functions including:<i>caar, cadr, cdar, cddr, caadr, caddr, cdadr, cadddr, not, equal?, newline, map, assoc, append</i>.<br/>
+<b>test.scm</b>: sample input, containing some test functions including:<i>test-define-func, test-let, test-let*, test-letrec, test-cond</i>.<br/>
 
 ###How to Run<br/>
 Go to the directory of interpreter and type the following commands in scheme:
