@@ -35,7 +35,7 @@
 		 (cond ((not (pair? (cadr exp))) 
 				(insert! (list (cadr exp) (my-eval (caddr exp) *global-env*)) *global-env*)
 				(cadr exp))
-			   (else (insert! (list (caadr exp) (list 'closure (list 'lambda (cdadr exp) (caddr exp)) *global-env*)) *global-env*)
+			   (else (insert! (list (caadr exp) (list 'closure (append (list 'lambda (cdadr exp)) (cddr exp)) *global-env*)) *global-env*)
 					 (caadr exp))
 			   ))
 		(else (my-eval exp *global-env*))
@@ -156,7 +156,7 @@
   (cond ((null? block) (display "Error: Can not have empty block or body"))
 		((null? (cdr block)) (my-eval (car block) env))
 		(else (my-eval (car block) env)
-			  (handle-block (cdr (block) env)))
+			  (handle-block (cdr block) env))
 		))
 
 (define *global-env*
