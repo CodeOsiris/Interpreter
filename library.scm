@@ -22,15 +22,21 @@
 (define (cadddr L)
   (car (cdr (cdr (cdr L)))))
 
+(define (and x y)
+  (if x y #f))
+
+(define (or x y)
+  (if x #t y))
+
 (define (not bool)
-  (if (eq? bool #t) #f #t))
+  (if bool #f #t))
 
 (define (equal? L1 L2)
   (cond ((null? L1) (null? L2))
 		((null? L2) #f)
 		((not (pair? L1)) (eq? L1 L2))
 		(else (if (pair? L2)
-				(cond ((eq? (car L1) (car L2)) (equal? (cdr L1) (cdr L2)))
+				(cond ((equal? (car L1) (car L2)) (equal? (cdr L1) (cdr L2)))
 					  (else #f))
 				#f))
 		))
