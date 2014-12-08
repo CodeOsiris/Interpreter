@@ -32,12 +32,7 @@
 (define (top-eval exp)
   (cond ((not (pair? exp)) (my-eval exp *global-env*))
 		((eq? (car exp) 'define)
-		 (cond ((not (pair? (cadr exp))) 
-				(insert! (list (cadr exp) (my-eval (caddr exp) *global-env*)) *global-env*)
-				(cadr exp))
-			   (else (insert! (list (caadr exp) (list 'closure (append (list 'lambda (cdadr exp)) (cddr exp)) *global-env*)) *global-env*)
-					 (caadr exp))
-			   ))
+		 (handle-define exp *global-env*))
 		(else (my-eval exp *global-env*))
 		))
 
@@ -59,6 +54,8 @@
 	 (handle-let* (cadr exp) (cddr exp) env))
 	((eq? (car exp) 'letrec)
 	 (handle-letrec (cadr exp) (cddr exp) env))
+	((eq? (car exp) 'define)
+	 (handle-define exp env))
 	(else
 	  (handle-call (map (lambda (sub-exp) (my-eval sub-exp env)) exp)))
 	))
@@ -157,6 +154,14 @@
 		((null? (cdr block)) (my-eval (car block) env))
 		(else (my-eval (car block) env)
 			  (handle-block (cdr block) env))
+		))
+
+(define (handle-define exp env)
+  (cond ((not (pair? (cadr exp)))
+		 (insert! (list (cadr exp) (my-eval (caddr exp) env)) env)
+		 (cadr exp))
+		(else (insert! (list (caadr exp) (list 'closure (append (list 'lambda (cdadr exp)) (cddr exp)) env)) env)
+			  (caadr exp))
 		))
 
 (define *global-env*
