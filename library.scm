@@ -22,12 +22,6 @@
 (define (cadddr L)
   (car (cdr (cdr (cdr L)))))
 
-(define (and x y)
-  (if x y #f))
-
-(define (or x y)
-  (if x #t y))
-
 (define (not bool)
   (if bool #f #t))
 

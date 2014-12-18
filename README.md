@@ -8,8 +8,8 @@ Documentation
 A mini-interpreter written in scheme which is able to interpret itself, and therefore could be extended in the future using boot-strap iteration.
 
 ###Files<br/>
-<b>interpreter.scm</b>: main file, provides supporting functions including: <i>define, if, cond, let, let*, letrec, quote, apply</i>.<br/>
-<b>library.scm</b>: library, contains implementations of non-primitive functions including: <i>caar, cadr, cdar, cddr, caadr, caddr, cdadr, cadddr, and, or, not, equal?, newline, map, assoc, append</i>.<br/>
+<b>interpreter.scm</b>: main file, provides supporting syntaxes including: <i>define, if, cond, let, let*, letrec, quote, apply, and, or</i>.<br/>
+<b>library.scm</b>: library, contains implementations of non-primitive functions including: <i>caar, cadr, cdar, cddr, caadr, caddr, cdadr, cadddr, not, equal?, newline, map, assoc, append</i>.<br/>
 <b>test.scm</b>: sample input, containing some test functions including: <i>test-define-func, test-let, test-let*, test-letrec, test-cond</i>.<br/>
 <b>test-library.scm</b>: sample input for library functions, containing a test function: <i>test-library</i></br>
 

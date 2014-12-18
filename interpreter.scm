@@ -56,6 +56,10 @@
 	 (handle-letrec (cadr exp) (cddr exp) env))
 	((eq? (car exp) 'define)
 	 (handle-define exp env))
+	((eq? (car exp) 'and)
+	 (handle-and (cdr exp) env))
+	((eq? (car exp) 'or)
+	 (handle-or (cdr exp) env))
 	(else
 	  (handle-call (map (lambda (sub-exp) (my-eval sub-exp env)) exp)))
 	))
@@ -162,6 +166,18 @@
 		 (cadr exp))
 		(else (insert! (list (caadr exp) (list 'closure (append (list 'lambda (cdadr exp)) (cddr exp)) env)) env)
 			  (caadr exp))
+		))
+
+(define (handle-and terms env)
+  (cond ((null? terms) #t)
+		(else (let ((val (my-eval (car terms) env)))
+				(if val (handle-and (cdr terms) env) #f)))
+		))
+
+(define (handle-or terms env)
+  (cond ((null? terms) #f)
+		(else (let ((val (my-eval (car terms) env)))
+				(if val #t (handle-and (cdr terms) env))))
 		))
 
 (define *global-env*
