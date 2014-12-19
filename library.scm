@@ -25,14 +25,9 @@
 (define (not bool)
   (if bool #f #t))
 
-(define (equal? L1 L2)
-  (cond ((null? L1) (null? L2))
-		((null? L2) #f)
-		((not (pair? L1)) (eq? L1 L2))
-		(else (if (pair? L2)
-				(cond ((equal? (car L1) (car L2)) (equal? (cdr L1) (cdr L2)))
-					  (else #f))
-				#f))
+(define (equal? a b)
+  (cond ((and (pair? a) (pair? b)) (and (equal? (car a) (car b)) (equal? (cdr a) (cdr b))))
+		(else (eq? a b))
 		))
 
 (define (newline)
